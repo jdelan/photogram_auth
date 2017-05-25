@@ -1,5 +1,6 @@
 <div class="page-header">
   <h3>User #<%= @user.id %></h3>
+    <h3>Username: <%=@user.username %></h3>
 </div>
 
 <div class="row">
@@ -14,7 +15,7 @@
       <% @photos.each do |photo| %>
       <tr>
         <td><%= photo.caption %></td>
-        <td><%= photo.image %></td>
+        <td><img src="<%= photo.image %>"</td>
         <td>
           <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
           <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
