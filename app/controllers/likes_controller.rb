@@ -1,4 +1,10 @@
 class LikesController < ApplicationController
+
+  def tags
+    @likes = Like.where({ user_id: current_user.id})
+    render("likes/my_likes.html.erb")
+  end
+
   def index
     @likes = Like.all
 
