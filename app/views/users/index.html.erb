@@ -10,12 +10,14 @@
       <tr>
         <th>Username</th>
         <th>User ID</th>
+        <th>Show User</th>
       </tr>
 
       <% @users.each do |user| %>
       <tr>
         <td><%= user.username %></td>
         <td><%= user.id %></td>
+          <td><a href="/users/<%= user.id %>" class="btn btn-primary">Show</a></td>
       </tr>
       <% end %>
     </table>

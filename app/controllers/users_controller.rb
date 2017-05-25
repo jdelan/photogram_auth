@@ -5,4 +5,10 @@ class UsersController < ApplicationController
     render("users/index.html.erb")
   end
 
+  def show
+    @user = User.find(params[:id])
+    @photos = Photo.where({ user_id: @user.id})
+    render("users/show.html.erb")
+  end
+
 end
