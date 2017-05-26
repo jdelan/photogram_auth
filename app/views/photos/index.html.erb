@@ -35,25 +35,26 @@
                   </button>
                 </form>
               </p></td>
-              <% if false %>
+
               <td>
-                 <%= @comments.photos.each do |comment|%>
+                 <% photo.comments.each do |comment|%>
                  <p> <%= comment.user.username %> ... <%= time_ago_in_words(comment.created_at) %> ago </p>
                  <p> <%= comment.body %> </p>
                  <% end %>
               </td>
-              <% end %>
+
               <td>
                 <a href="/photos/<%= photo.id %>" class="btn btn-primary">Show</a>
-                <% if photo.user_id = current_user.id then %>
+                <% if photo.user_id == current_user.id then %>
                 <a href="/photos/<%= photo.id %>/edit" class="btn btn-warning">Edit</a>
                 <a href="/delete_photo/<%= photo.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
                 <% end %>
               </td>
             </tr>
-            <li class="media">
+            <!-- <li class="media"> -->
               <div class="media-body">
                 <form action="/create_comment" method="post">
+                  <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
                   <!-- Hidden input for authenticity token to protect from forgery -->
                   <!-- <input name="authenticity_token" type="hidden" value="WNyZC3c5D20IoLOgMdnch/sF2vLk6UhINyQYwHDG+osiz23VpPP3Gi1Kadc+jHOiS5ZuR6XbVUsWZUbZM04rBw=="> -->
 
@@ -71,7 +72,7 @@
                       <input type="text" id="body" name="body" class="form-control" placeholder="Add a comment..." required>
 
                       <span class="input-group-btn">
-                        <button class="btn btn-default" type="button">
+                        <button class="btn btn-default" type="submit">
                           <i class="fa fa-commenting-o"></i>
                         </button>
                       </span>
@@ -79,7 +80,7 @@
                   </div>
                 </form>
               </div>
-            </li>
+              <!-- </li> -->
             <% end %>
           </h3>
         </div>
